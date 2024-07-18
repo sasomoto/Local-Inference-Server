@@ -1,0 +1,8 @@
+//before using this code, go to your  and type: setx API_KEY followed by pasting your actual api key
+import os
+//it is not considered professional to display your API Key so we use this method of saving it's value to an environment variable, 
+//another method using .env file also exists
+//use prep
+
+api_key=os.getenv("API_KEY")
+print(api_key)
