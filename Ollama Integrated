@@ -1,0 +1,6 @@
+//use this only if you have Ollama on your local PC
+from langchain_community.llms import Ollama
+llm= Ollama(model="mistral") //ollama pulls the mistral models
+question=input('How can I help you?')
+response=llm.invoke(question) //this allows you to ask any question without having to change the line again
+print(response)
