@@ -1,0 +1,25 @@
+from fastapi import FastAPI, HTTPException
+   from fastapi.responses import JSONResponse
+   import torch
+   from transformers import AutoTokenizer
+
+   app = FastAPI()
+
+   # Load pre-trained model and tokenizer
+   MODEL_NAME = "mistralai/mistral-small-1024"
+   tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+   model = torch.jit.load('model.bin')
+
+   @app.post('/predict')
+   def predict():
+       text = request.query_params['text']
+       if not text:
+           raise HTTPException(status_code=400, detail="Text is required")
+
+       # Prepare input and run inference on the model
+       inputs = tokenizer(text, return_tensors='pt')
+       with torch.no_grad():
+           output = model(**inputs)
+
+       predicted_text = tokenizer.decode(output[0][0])
+       return JSONResponse({'prediction': predicted_text})
