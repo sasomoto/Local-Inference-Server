@@ -23,3 +23,11 @@ from fastapi import FastAPI, HTTPException
 
        predicted_text = tokenizer.decode(output[0][0])
        return JSONResponse({'prediction': predicted_text})
+//Post this run the FastAPI application and access the local inference server from other applications on your computer or
+//over the network: uvicorn main:app --host 0.0.0.0 --port 8000
+//Replace main.py with the name of your script file. Access the local inference server via
+//http://localhost:8000/predict, providing the text to be predicted as a query parameter (e.g.,
+//http://localhost:8000/predict?text=Hello+World!).
+//8. If desired, you can package your inference server as a Docker container for easier deployment across different
+environments. To do this, create a Dockerfile and use Docker commands to build and run the container. For more
+information on setting up a Docker container, refer to the official Docker documentation: https://docs.docker.com/engine/tutorials/getting-started/
