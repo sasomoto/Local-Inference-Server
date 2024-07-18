@@ -1,0 +1,31 @@
+//1. Install Python 3.8 or higher on your WSL environment, if not already installed:
+
+   
+   sudo apt-get install python3
+   
+
+2. Create a new virtual environment for the project:
+
+   
+   python3 -m venv mistral_venv
+   source mistral_venv/bin/activate  # activate the virtual environment
+   
+
+3. Install Mistral LLM and its dependencies using pip:
+
+   
+   pip install mistral
+   
+
+4. Download the pre-trained Mistral model from the Hugging Face Model Hub:
+
+   
+   wget https://huggingface.co/mistralai/mistral-small-1024/resolve/main/model.bin
+   wget https://huggingface.co/mistralai/mistral-small-1024/resolve/main/vocab.json
+   
+
+5. Install the necessary libraries for serving the model:
+
+   
+   pip install fastapi[all] uvicorn
+   
